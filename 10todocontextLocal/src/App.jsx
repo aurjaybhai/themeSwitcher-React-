@@ -6,12 +6,20 @@ function App() {
   const [todos, setTodos] = useState([]); // by default the value is empty array
 
   const addTodo = (todo) => {
-    setTodos((prev) => [{ id: Date.now(), ...todo}, ...prev]);
+    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
-  const updateTodo = (id,todo) => {
-    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === id)))
-  }
+  const updateTodo = (id, todo) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)),
+    );
+
+    prev.map((eachVal) => {
+      if (eachVal.id === id) {
+        todo;
+      }
+    });
+  };
 
   return (
     <TodoProvider value={{}}>
