@@ -14,15 +14,29 @@ function App() {
       prev.map((prevTodo) => (prevTodo.id === id ? todo : prevTodo)),
     );
 
-    prev.map((eachVal) => {
-      if (eachVal.id === id) {
-        todo;
-      }
-    });
+    // prev.map((eachVal) => {
+    //   if (eachVal.id === id) {
+    //     todo;
+    //   }
+    // });
+  };
+
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
+
+  const toggleComplete = (id) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo === id
+          ? { ...prevTodo, completed: !prevTodo.completed }
+          : prevTodo,
+      ),
+    );
   };
 
   return (
-    <TodoProvider value={{}}>
+    <TodoProvider value={{todos,addTodo,updateTodo,deleteTodo,toggleComplete}}>
       <div className="bg-[#172842] min-h-screen py-8">
         <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
           {" "}
